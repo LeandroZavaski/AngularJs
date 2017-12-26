@@ -1,12 +1,11 @@
-// public/js/directives/minhas-diretivas.js
-
 angular.module('minhasDiretivas', [])
-    .directive('meuPainel', function() {
+    .directive('meuPainel', function () {
 
         var ddo = {};
 
         ddo.restrict = "AE";
         ddo.transclude = true;
+
 
         ddo.scope = {
             titulo: '@'
@@ -16,7 +15,7 @@ angular.module('minhasDiretivas', [])
 
         return ddo;
     })
-    .directive('minhaFoto', function() {
+    .directive('minhaFoto', function () {
 
         var ddo = {};
 
@@ -30,5 +29,35 @@ angular.module('minhasDiretivas', [])
         ddo.templateUrl = 'js/directives/minha-foto.html';
 
         return ddo;
+    })
+    .directive('meuBotaoPerigo', function () {
+        var ddo = {};
+        ddo.restrict = "E";
+        ddo.scope = {
+            nome: '@',
+            acao: '&'
+        }
+        ddo.templateUrl = 'js/directives/botao-delete.html';
 
+        return ddo;
+    })
+    .directive('meuFocus', function () {
+        var ddo = {};
+        ddo.restrict = "A";
+        // não tem mais scope
+        ddo.link = function (scope, element) {
+            scope.$on('fotoCadastrada', function () {
+                element[0].focus();
+            });
+        };
+
+        return ddo;
+    })
+    .directive('meusTitulos', function() {
+        var ddo = {};
+        ddo.restrict = 'E';
+        ddo.template = '<ul><li ng-repeat="titulo in titulos">{{titulo}}</li></ul>';
+        ddo.controller = function($scope, recursoFoto) {
+        };
+        return ddo;
     });
