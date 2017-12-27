@@ -56,7 +56,7 @@ angular.module('minhasDiretivas', [])
     .directive('meusTitulos', function() {
         var ddo = {};
         ddo.restrict = 'E';
-        ddo.template = '<ul><li ng-repeat="titulo in titulos">{{titulo}}</li></ul>';
+        ddo.templateUrl = 'js/directives/meu-titulos.html';
         ddo.controller = function($scope, recursoFoto) {
         };
         return ddo;
